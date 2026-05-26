@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Issam Amraoui — Développeur Full-Stack</title>
-<meta name="description" content="Issam Amraoui, développeur full-stack (PHP/Laravel, Vue.js) basé à Liège. Spécialisé dans le développement web et l'IA appliquée."/>
+<title data-i18n="meta.title">Issam Amraoui — Développeur Full-Stack</title>
+<meta name="description" data-i18n-attr="content" data-i18n="meta.description" content="Issam Amraoui, développeur full-stack (PHP/Laravel, Vue.js) basé à Liège. Spécialisé dans le développement web et l'IA appliquée."/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -62,7 +62,7 @@
     background: rgba(10,14,20,0.82); backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
-  .nav-inner { max-width: 1080px; margin: 0 auto; padding: 13px 28px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-inner { max-width: 1080px; margin: 0 auto; padding: 13px 28px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
   .nav-brand { display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 14px; }
   .dots { display: flex; gap: 6px; }
   .dot { width: 11px; height: 11px; border-radius: 50%; }
@@ -73,12 +73,28 @@
   .nav-links a { color: var(--muted); transition: color 0.2s; position: relative; }
   .nav-links a:hover { color: var(--blue); }
   .nav-links a .hash { color: var(--faint); }
+  .nav-right { display: flex; align-items: center; gap: 14px; }
   .nav-cta {
     font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: var(--green);
     border: 1px solid var(--border-bright); padding: 7px 14px; border-radius: 6px; transition: all 0.2s;
   }
   .nav-cta:hover { border-color: var(--green); background: rgba(86,211,100,0.08); }
+
+  /* ===== language toggle ===== */
+  .lang-toggle {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px;
+    background: transparent; border: 1px solid var(--border-bright);
+    padding: 6px 10px; border-radius: 6px; cursor: pointer;
+    color: var(--faint); transition: all 0.2s;
+  }
+  .lang-toggle:hover { border-color: var(--blue); }
+  .lang-toggle .lang-opt { padding: 0 2px; transition: color 0.2s; }
+  .lang-toggle .lang-opt.active { color: var(--blue); font-weight: 700; }
+  .lang-toggle .lang-sep { color: var(--faint); opacity: 0.6; }
+
   @media (max-width: 760px) { .nav-links { display: none; } }
+  @media (max-width: 480px) { .nav-cta { display: none; } }
 
   /* ===== reveal animation ===== */
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -209,12 +225,19 @@
         <span class="path">~/<b>issam-amraoui</b></span>
       </div>
       <div class="nav-links">
-        <a href="#about"><span class="hash">#</span> à_propos</a>
-        <a href="#skills"><span class="hash">#</span> stack</a>
-        <a href="#experience"><span class="hash">#</span> expérience</a>
-        <a href="#projects"><span class="hash">#</span> projets</a>
+        <a href="#about"><span class="hash">#</span> <span data-i18n="nav.about">à_propos</span></a>
+        <a href="#skills"><span class="hash">#</span> <span data-i18n="nav.skills">stack</span></a>
+        <a href="#experience"><span class="hash">#</span> <span data-i18n="nav.experience">expérience</span></a>
+        <a href="#projects"><span class="hash">#</span> <span data-i18n="nav.projects">projets</span></a>
       </div>
-      <a href="#contact" class="nav-cta">./contact.sh</a>
+      <div class="nav-right">
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="Change language">
+          <span class="lang-opt" data-lang="fr">FR</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-opt" data-lang="en">EN</span>
+        </button>
+        <a href="#contact" class="nav-cta">./contact.sh</a>
+      </div>
     </div>
   </nav>
 
@@ -228,16 +251,16 @@
         </div>
         <div class="term-body">
           <div class="term-line"><span class="pr">$</span> <span class="cmd">whoami</span></div>
-          <div class="hero-role mono">DÉVELOPPEUR FULL-STACK</div>
+          <div class="hero-role mono" data-i18n="hero.role">DÉVELOPPEUR FULL-STACK</div>
           <div class="hero-name"><span id="typed"></span><span class="cursor">_</span></div>
-          <div class="hero-desc">
+          <div class="hero-desc" data-i18n="hero.desc">
             <b>5 ans d'expérience</b> dans l'écosystème PHP/Laravel et Vue.js. Après une progression rapide
             de Junior à Manager, je reviens à un rôle pleinement technique — concevoir et livrer du code de qualité,
             avec une vraie maîtrise du <b>développement assisté par IA</b>.
           </div>
           <div class="hero-actions">
-            <a href="#projects" class="btn btn-primary">&#9658; voir mes projets</a>
-            <a href="CV_Issam_Amraoui.pdf" class="btn btn-ghost" download>&#8595; télécharger le CV</a>
+            <a href="#projects" class="btn btn-primary" data-i18n="hero.btnProjects">&#9658; voir mes projets</a>
+            <a href="CV_Issam_Amraoui.pdf" class="btn btn-ghost" download data-i18n="hero.btnCv">&#8595; télécharger le CV</a>
           </div>
         </div>
       </div>
@@ -247,19 +270,19 @@
   <!-- ABOUT -->
   <section class="sec" id="about">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">01.</span><span class="sec-title">à_propos</span><span class="sec-rule"></span></div>
+      <div class="sec-head reveal"><span class="sec-num">01.</span><span class="sec-title" data-i18n="about.title">à_propos</span><span class="sec-rule"></span></div>
       <div class="about-grid">
         <div class="about-text reveal">
-          <p>Je suis développeur full-stack basé à <b>Liège</b>, spécialisé dans la conception d'applications web modernes avec <b>Laravel</b> et <b>Vue.js</b>.</p>
-          <p>Chez Mega, je suis passé de Junior à Manager en quatre ans. J'y ai piloté une équipe de 8 à 10 développeurs, mené une <b>migration vers une architecture microservices</b> et porté des projets produits de bout en bout.</p>
-          <p>Aujourd'hui, je choisis de <b>revenir au code</b> : c'est là que se trouve ma passion. Mon expérience de management me donne une vision globale de l'architecture et de la collaboration, et je mets un point d'honneur à intégrer l'<b>IA</b> intelligemment dans mon flux de travail comme dans celui des équipes.</p>
+          <p data-i18n="about.p1">Je suis développeur full-stack basé à <b>Liège</b>, spécialisé dans la conception d'applications web modernes avec <b>Laravel</b> et <b>Vue.js</b>.</p>
+          <p data-i18n="about.p2">Chez Mega, je suis passé de Junior à Manager en quatre ans. J'y ai piloté une équipe de 8 à 10 développeurs, mené une <b>migration vers une architecture microservices</b> et porté des projets produits de bout en bout.</p>
+          <p data-i18n="about.p3">Aujourd'hui, je choisis de <b>revenir au code</b> : c'est là que se trouve ma passion. Mon expérience de management me donne une vision globale de l'architecture et de la collaboration, et je mets un point d'honneur à intégrer l'<b>IA</b> intelligemment dans mon flux de travail comme dans celui des équipes.</p>
         </div>
         <div class="about-card reveal">
-          <div class="row"><span class="k">localisation</span><span class="v">Liège, BE</span></div>
-          <div class="row"><span class="k">expérience</span><span class="v">5 ans</span></div>
-          <div class="row"><span class="k">focus</span><span class="v">Full-Stack</span></div>
-          <div class="row"><span class="k">langues</span><span class="v">FR · EN</span></div>
-          <div class="row"><span class="k">statut</span><span class="v on">● disponible</span></div>
+          <div class="row"><span class="k" data-i18n="about.card.location">localisation</span><span class="v">Liège, BE</span></div>
+          <div class="row"><span class="k" data-i18n="about.card.experience">expérience</span><span class="v" data-i18n="about.card.experienceVal">5 ans</span></div>
+          <div class="row"><span class="k" data-i18n="about.card.focus">focus</span><span class="v">Full-Stack</span></div>
+          <div class="row"><span class="k" data-i18n="about.card.languages">langues</span><span class="v">FR · EN</span></div>
+          <div class="row"><span class="k" data-i18n="about.card.status">statut</span><span class="v on" data-i18n="about.card.statusVal">● disponible</span></div>
         </div>
       </div>
     </div>
@@ -268,28 +291,28 @@
   <!-- SKILLS -->
   <section class="sec" id="skills">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">02.</span><span class="sec-title">stack_technique</span><span class="sec-rule"></span></div>
+      <div class="sec-head reveal"><span class="sec-num">02.</span><span class="sec-title" data-i18n="skills.title">stack_technique</span><span class="sec-rule"></span></div>
       <div class="skills-grid">
         <div class="skill-card reveal">
-          <div class="sh"><span class="gt">const</span> langages <span class="gt">=</span></div>
+          <div class="sh"><span class="gt">const</span> <span data-i18n="skills.languages">langages</span> <span class="gt">=</span></div>
           <div class="chips">
             <span class="chip key">PHP</span><span class="chip key">JavaScript</span><span class="chip">Python</span><span class="chip">C#</span><span class="chip">Java</span>
           </div>
         </div>
         <div class="skill-card reveal">
-          <div class="sh"><span class="gt">const</span> frameworks <span class="gt">=</span></div>
+          <div class="sh"><span class="gt">const</span> <span data-i18n="skills.frameworks">frameworks</span> <span class="gt">=</span></div>
           <div class="chips">
             <span class="chip key">Laravel</span><span class="chip key">Vue.js</span><span class="chip">Tailwind</span>
           </div>
         </div>
         <div class="skill-card reveal">
-          <div class="sh"><span class="gt">const</span> devops <span class="gt">=</span></div>
+          <div class="sh"><span class="gt">const</span> <span data-i18n="skills.devops">devops</span> <span class="gt">=</span></div>
           <div class="chips">
             <span class="chip">Docker</span><span class="chip">GitLab CI</span><span class="chip">TeamCity</span>
           </div>
         </div>
         <div class="skill-card reveal">
-          <div class="sh"><span class="gt">const</span> méthodes <span class="gt">=</span></div>
+          <div class="sh"><span class="gt">const</span> <span data-i18n="skills.methods">méthodes</span> <span class="gt">=</span></div>
           <div class="chips">
             <span class="chip key">IA / Claude</span><span class="chip">Agile</span><span class="chip">Jira</span><span class="chip">Confluence</span>
           </div>
@@ -301,35 +324,35 @@
   <!-- EXPERIENCE -->
   <section class="sec" id="experience">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">03.</span><span class="sec-title">expérience</span><span class="sec-rule"></span></div>
+      <div class="sec-head reveal"><span class="sec-num">03.</span><span class="sec-title" data-i18n="exp.title">expérience</span><span class="sec-rule"></span></div>
       <div class="timeline">
         <div class="tl-item cur reveal">
           <span class="node"></span>
-          <div class="tl-head"><span class="tl-role">Manager — Équipe Développement IT</span><span class="tl-period">Mai 2025 — Présent</span></div>
+          <div class="tl-head"><span class="tl-role" data-i18n="exp.tl1.role">Manager — Équipe Développement IT</span><span class="tl-period" data-i18n="exp.tl1.period">Mai 2025 — Présent</span></div>
           <div class="tl-co">Mega · Liège</div>
           <ul class="tl-list">
-            <li><b>Encadrement</b> d'une équipe de 8 à 10 développeurs, incluant des prestataires externes (Deuse).</li>
-            <li><b>Intégration de Claude</b> dans l'équipe : bonnes pratiques de développement assisté par IA pour accélérer la production et fiabiliser les revues de code.</li>
-            <li><b>Activité technique maintenue</b> : maintenance urgente, analyses, choix d'architecture et suivi de projets.</li>
-            <li><b>Recrutement</b> de 4 collaborateurs et rédaction des fiches de poste.</li>
+            <li data-i18n="exp.tl1.li1"><b>Encadrement</b> d'une équipe de 8 à 10 développeurs, incluant des prestataires externes (Deuse).</li>
+            <li data-i18n="exp.tl1.li2"><b>Intégration de Claude</b> dans l'équipe : bonnes pratiques de développement assisté par IA pour accélérer la production et fiabiliser les revues de code.</li>
+            <li data-i18n="exp.tl1.li3"><b>Activité technique maintenue</b> : maintenance urgente, analyses, choix d'architecture et suivi de projets.</li>
+            <li data-i18n="exp.tl1.li4"><b>Recrutement</b> de 4 collaborateurs et rédaction des fiches de poste.</li>
           </ul>
         </div>
         <div class="tl-item reveal">
           <span class="node"></span>
-          <div class="tl-head"><span class="tl-role">Développeur Medior puis Senior</span><span class="tl-period">2022 — Mai 2025</span></div>
+          <div class="tl-head"><span class="tl-role" data-i18n="exp.tl2.role">Développeur Medior puis Senior</span><span class="tl-period" data-i18n="exp.tl2.period">2022 — Mai 2025</span></div>
           <div class="tl-co">Mega · Liège</div>
           <ul class="tl-list">
-            <li><b>Migration</b> de la codebase legacy (PHP, HTML, jQuery) vers une architecture microservices en Laravel et Vue.js.</li>
-            <li><b>Analyse et développement</b> d'une grande partie de Mega Telecom, produit lancé en 2024.</li>
-            <li><b>Reprise en autonomie</b> du « suivi switch » pour Mega NL après le départ du lead.</li>
+            <li data-i18n="exp.tl2.li1"><b>Migration</b> de la codebase legacy (PHP, HTML, jQuery) vers une architecture microservices en Laravel et Vue.js.</li>
+            <li data-i18n="exp.tl2.li2"><b>Analyse et développement</b> d'une grande partie de Mega Telecom, produit lancé en 2024.</li>
+            <li data-i18n="exp.tl2.li3"><b>Reprise en autonomie</b> du « suivi switch » pour Mega NL après le départ du lead.</li>
           </ul>
         </div>
         <div class="tl-item reveal">
           <span class="node"></span>
-          <div class="tl-head"><span class="tl-role">Développeur Junior</span><span class="tl-period">Juil. 2021 — 2022</span></div>
+          <div class="tl-head"><span class="tl-role" data-i18n="exp.tl3.role">Développeur Junior</span><span class="tl-period" data-i18n="exp.tl3.period">Juil. 2021 — 2022</span></div>
           <div class="tl-co">Mega · Liège</div>
           <ul class="tl-list">
-            <li><b>Développement et maintenance</b> des outils internes ; promotion au poste de Medior après un an.</li>
+            <li data-i18n="exp.tl3.li1"><b>Développement et maintenance</b> des outils internes ; promotion au poste de Medior après un an.</li>
           </ul>
         </div>
       </div>
@@ -339,7 +362,7 @@
   <!-- PROJECTS -->
   <section class="sec" id="projects">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">04.</span><span class="sec-title">projets</span><span class="sec-rule"></span></div>
+      <div class="sec-head reveal"><span class="sec-num">04.</span><span class="sec-title" data-i18n="projects.title">projets</span><span class="sec-rule"></span></div>
       <div class="proj-grid">
         <div class="proj-card reveal">
           <div class="proj-top">
@@ -349,9 +372,9 @@
           </div>
           <div class="proj-body">
             <div class="proj-name">AURA Studio</div>
-            <div class="proj-desc">Application desktop générant de la musique à partir de prompts textuels (MusicGen) et analysant des références audio YouTube (CLAP). Modèles d'IA générative dans une app packagée et distribuée, avec auto-update.</div>
+            <div class="proj-desc" data-i18n="projects.aura.desc">Application desktop générant de la musique à partir de prompts textuels (MusicGen) et analysant des références audio YouTube (CLAP). Modèles d'IA générative dans une app packagée et distribuée, avec auto-update.</div>
             <div class="proj-stack"><span class="st">PyTorch · Transformers · MusicGen · CLAP · Tailwind</span></div>
-            <div class="proj-links"><a href="https://github.com/ia95-lgtm/aura-studio-releases" target="_blank">&#8599; voir le repo</a></div>
+            <div class="proj-links"><a href="https://github.com/ia95-lgtm/aura-studio-releases" target="_blank" data-i18n="projects.aura.link">&#8599; voir le repo</a></div>
           </div>
         </div>
         <div class="proj-card reveal">
@@ -362,9 +385,9 @@
           </div>
           <div class="proj-body">
             <div class="proj-name">Mega Telecom</div>
-            <div class="proj-desc">Analyse et développement d'une grande partie de Mega Telecom, produit lancé en 2024, au sein de l'architecture microservices de l'entreprise. Projet phare mené de l'analyse à la livraison.</div>
+            <div class="proj-desc" data-i18n="projects.mega.desc">Analyse et développement d'une grande partie de Mega Telecom, produit lancé en 2024, au sein de l'architecture microservices de l'entreprise. Projet phare mené de l'analyse à la livraison.</div>
             <div class="proj-stack"><span class="st">Laravel · Vue.js · Docker · GitLab CI · Microservices</span></div>
-            <div class="proj-links"><span style="color:var(--faint)">● projet d'entreprise · 2024</span></div>
+            <div class="proj-links"><span style="color:var(--faint)" data-i18n="projects.mega.note">● projet d'entreprise · 2024</span></div>
           </div>
         </div>
       </div>
@@ -376,10 +399,10 @@
     <div class="wrap">
       <div class="reveal">
         <div class="pre">$ ./contact.sh --init</div>
-        <h2>Travaillons ensemble.</h2>
-        <p>Je suis ouvert aux opportunités de développement full-stack. N'hésite pas à me contacter — je réponds rapidement.</p>
+        <h2 data-i18n="contact.title">Travaillons ensemble.</h2>
+        <p data-i18n="contact.text">Je suis ouvert aux opportunités de développement full-stack. N'hésite pas à me contacter — je réponds rapidement.</p>
         <div class="contact-links">
-          <a href="mailto:issam.amraoui95@gmail.com" class="btn btn-primary">&#9993; m'écrire</a>
+          <a href="mailto:issam.amraoui95@gmail.com" class="btn btn-primary" data-i18n="contact.btnMail">&#9993; m'écrire</a>
           <a href="https://www.linkedin.com/in/issam-amraoui-39366a1b9/" target="_blank" class="btn btn-ghost">in · LinkedIn</a>
           <a href="https://github.com/ia95-lgtm" target="_blank" class="btn btn-ghost">&#8997; GitHub</a>
         </div>
@@ -388,11 +411,155 @@
   </section>
 
   <footer>
-    <div class="wrap">conçu &amp; codé par <span class="b">Issam Amraoui</span> · <span id="year"></span> · <span class="b">Vue.js</span></div>
+    <div class="wrap"><span data-i18n="footer.text">conçu &amp; codé par</span> <span class="b">Issam Amraoui</span> · <span id="year"></span> · <span class="b">Vue.js</span></div>
   </footer>
 </div>
 
 <script>
+  // --- i18n ---
+  var I18N = {
+    fr: {
+      'meta.title': "Issam Amraoui — Développeur Full-Stack",
+      'meta.description': "Issam Amraoui, développeur full-stack (PHP/Laravel, Vue.js) basé à Liège. Spécialisé dans le développement web et l'IA appliquée.",
+      'nav.about': "à_propos",
+      'nav.skills': "stack",
+      'nav.experience': "expérience",
+      'nav.projects': "projets",
+      'hero.role': "DÉVELOPPEUR FULL-STACK",
+      'hero.desc': "<b>5 ans d'expérience</b> dans l'écosystème PHP/Laravel et Vue.js. Après une progression rapide de Junior à Manager, je reviens à un rôle pleinement technique — concevoir et livrer du code de qualité, avec une vraie maîtrise du <b>développement assisté par IA</b>.",
+      'hero.btnProjects': "▶ voir mes projets",
+      'hero.btnCv': "↓ télécharger le CV",
+      'about.title': "à_propos",
+      'about.p1': "Je suis développeur full-stack basé à <b>Liège</b>, spécialisé dans la conception d'applications web modernes avec <b>Laravel</b> et <b>Vue.js</b>.",
+      'about.p2': "Chez Mega, je suis passé de Junior à Manager en quatre ans. J'y ai piloté une équipe de 8 à 10 développeurs, mené une <b>migration vers une architecture microservices</b> et porté des projets produits de bout en bout.",
+      'about.p3': "Aujourd'hui, je choisis de <b>revenir au code</b> : c'est là que se trouve ma passion. Mon expérience de management me donne une vision globale de l'architecture et de la collaboration, et je mets un point d'honneur à intégrer l'<b>IA</b> intelligemment dans mon flux de travail comme dans celui des équipes.",
+      'about.card.location': "localisation",
+      'about.card.experience': "expérience",
+      'about.card.experienceVal': "5 ans",
+      'about.card.focus': "focus",
+      'about.card.languages': "langues",
+      'about.card.status': "statut",
+      'about.card.statusVal': "● disponible",
+      'skills.title': "stack_technique",
+      'skills.languages': "langages",
+      'skills.frameworks': "frameworks",
+      'skills.devops': "devops",
+      'skills.methods': "méthodes",
+      'exp.title': "expérience",
+      'exp.tl1.role': "Manager — Équipe Développement IT",
+      'exp.tl1.period': "Mai 2025 — Présent",
+      'exp.tl1.li1': "<b>Encadrement</b> d'une équipe de 8 à 10 développeurs, incluant des prestataires externes (Deuse).",
+      'exp.tl1.li2': "<b>Intégration de Claude</b> dans l'équipe : bonnes pratiques de développement assisté par IA pour accélérer la production et fiabiliser les revues de code.",
+      'exp.tl1.li3': "<b>Activité technique maintenue</b> : maintenance urgente, analyses, choix d'architecture et suivi de projets.",
+      'exp.tl1.li4': "<b>Recrutement</b> de 4 collaborateurs et rédaction des fiches de poste.",
+      'exp.tl2.role': "Développeur Medior puis Senior",
+      'exp.tl2.period': "2022 — Mai 2025",
+      'exp.tl2.li1': "<b>Migration</b> de la codebase legacy (PHP, HTML, jQuery) vers une architecture microservices en Laravel et Vue.js.",
+      'exp.tl2.li2': "<b>Analyse et développement</b> d'une grande partie de Mega Telecom, produit lancé en 2024.",
+      'exp.tl2.li3': "<b>Reprise en autonomie</b> du « suivi switch » pour Mega NL après le départ du lead.",
+      'exp.tl3.role': "Développeur Junior",
+      'exp.tl3.period': "Juil. 2021 — 2022",
+      'exp.tl3.li1': "<b>Développement et maintenance</b> des outils internes ; promotion au poste de Medior après un an.",
+      'projects.title': "projets",
+      'projects.aura.desc': "Application desktop générant de la musique à partir de prompts textuels (MusicGen) et analysant des références audio YouTube (CLAP). Modèles d'IA générative dans une app packagée et distribuée, avec auto-update.",
+      'projects.aura.link': "↗ voir le repo",
+      'projects.mega.desc': "Analyse et développement d'une grande partie de Mega Telecom, produit lancé en 2024, au sein de l'architecture microservices de l'entreprise. Projet phare mené de l'analyse à la livraison.",
+      'projects.mega.note': "● projet d'entreprise · 2024",
+      'contact.title': "Travaillons ensemble.",
+      'contact.text': "Je suis ouvert aux opportunités de développement full-stack. N'hésite pas à me contacter — je réponds rapidement.",
+      'contact.btnMail': "✉ m'écrire",
+      'footer.text': "conçu &amp; codé par"
+    },
+    en: {
+      'meta.title': "Issam Amraoui — Full-Stack Developer",
+      'meta.description': "Issam Amraoui, full-stack developer (PHP/Laravel, Vue.js) based in Liège. Specialized in web development and applied AI.",
+      'nav.about': "about",
+      'nav.skills': "stack",
+      'nav.experience': "experience",
+      'nav.projects': "projects",
+      'hero.role': "FULL-STACK DEVELOPER",
+      'hero.desc': "<b>5 years of experience</b> in the PHP/Laravel and Vue.js ecosystem. After a rapid progression from Junior to Manager, I'm returning to a fully technical role — designing and shipping quality code, with real mastery of <b>AI-assisted development</b>.",
+      'hero.btnProjects': "▶ view my projects",
+      'hero.btnCv': "↓ download CV",
+      'about.title': "about_me",
+      'about.p1': "I'm a full-stack developer based in <b>Liège</b>, specialized in building modern web applications with <b>Laravel</b> and <b>Vue.js</b>.",
+      'about.p2': "At Mega, I went from Junior to Manager in four years. I led a team of 8 to 10 developers, drove a <b>migration to a microservices architecture</b> and saw product initiatives through end-to-end.",
+      'about.p3': "Today, I'm choosing to <b>get back to the code</b>: that's where my passion lies. My management experience gives me a holistic view of architecture and collaboration, and I take pride in integrating <b>AI</b> intelligently into my workflow and that of teams.",
+      'about.card.location': "location",
+      'about.card.experience': "experience",
+      'about.card.experienceVal': "5 years",
+      'about.card.focus': "focus",
+      'about.card.languages': "languages",
+      'about.card.status': "status",
+      'about.card.statusVal': "● available",
+      'skills.title': "tech_stack",
+      'skills.languages': "languages",
+      'skills.frameworks': "frameworks",
+      'skills.devops': "devops",
+      'skills.methods': "methods",
+      'exp.title': "experience",
+      'exp.tl1.role': "Manager — IT Development Team",
+      'exp.tl1.period': "May 2025 — Present",
+      'exp.tl1.li1': "<b>Led</b> a team of 8 to 10 developers, including external contractors (Deuse).",
+      'exp.tl1.li2': "<b>Claude integration</b> across the team: best practices for AI-assisted development to accelerate delivery and strengthen code reviews.",
+      'exp.tl1.li3': "<b>Hands-on technical work</b>: urgent maintenance, analyses, architecture decisions and project follow-up.",
+      'exp.tl1.li4': "<b>Hired</b> 4 team members and wrote the job specs.",
+      'exp.tl2.role': "Medior then Senior Developer",
+      'exp.tl2.period': "2022 — May 2025",
+      'exp.tl2.li1': "<b>Migrated</b> the legacy codebase (PHP, HTML, jQuery) to a microservices architecture in Laravel and Vue.js.",
+      'exp.tl2.li2': "<b>Analyzed and developed</b> a large part of Mega Telecom, a product launched in 2024.",
+      'exp.tl2.li3': "<b>Independently took over</b> the « suivi switch » module for Mega NL after the lead's departure.",
+      'exp.tl3.role': "Junior Developer",
+      'exp.tl3.period': "Jul. 2021 — 2022",
+      'exp.tl3.li1': "<b>Built and maintained</b> internal tools; promoted to Medior after one year.",
+      'projects.title': "projects",
+      'projects.aura.desc': "Desktop application that generates music from text prompts (MusicGen) and analyzes YouTube audio references (CLAP). Generative AI models packaged in a distributable app with auto-update.",
+      'projects.aura.link': "↗ view the repo",
+      'projects.mega.desc': "Analysis and development of a large part of Mega Telecom, a product launched in 2024, within the company's microservices architecture. Flagship project taken from analysis to delivery.",
+      'projects.mega.note': "● company project · 2024",
+      'contact.title': "Let's work together.",
+      'contact.text': "I'm open to full-stack development opportunities. Feel free to reach out — I reply quickly.",
+      'contact.btnMail': "✉ email me",
+      'footer.text': "designed &amp; coded by"
+    }
+  };
+
+  function applyLang(lang) {
+    var dict = I18N[lang] || I18N.fr;
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (!(key in dict)) return;
+      var val = dict[key];
+      var attr = el.getAttribute('data-i18n-attr');
+      if (attr) {
+        el.setAttribute(attr, val);
+      } else if (el.tagName === 'TITLE') {
+        el.textContent = val;
+      } else {
+        el.innerHTML = val;
+      }
+    });
+    document.querySelectorAll('#langToggle .lang-opt').forEach(function (opt) {
+      opt.classList.toggle('active', opt.getAttribute('data-lang') === lang);
+    });
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+
+  (function initLang() {
+    var stored = null;
+    try { stored = localStorage.getItem('lang'); } catch (e) {}
+    var initial = stored || (navigator.language && navigator.language.toLowerCase().indexOf('en') === 0 ? 'en' : 'fr');
+    applyLang(initial);
+    var toggle = document.getElementById('langToggle');
+    if (toggle) {
+      toggle.addEventListener('click', function () {
+        var current = document.documentElement.getAttribute('lang') || 'fr';
+        applyLang(current === 'fr' ? 'en' : 'fr');
+      });
+    }
+  })();
+
   // --- typing effect ---
   (function () {
     var full = 'Issam Amraoui';
