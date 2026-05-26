@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>404 — Page introuvable | Issam Amraoui</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0a0e14; --ink:#e8edf4; --muted:#9aa6b6; --faint:#5f6b7c; --blue:#58a6ff; --green:#56d364; --border:#1f2733; --border-bright:#2b3543; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:var(--bg); color:var(--ink); min-height:100vh;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Inter',sans-serif; padding:24px;
+    background-image:linear-gradient(rgba(88,166,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(88,166,255,0.04) 1px,transparent 1px);
+    background-size:44px 44px;
+  }
+  .box { width:100%; max-width:560px; background:#11161f; border:1px solid var(--border); border-radius:12px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,0.7); }
+  .bar { display:flex; align-items:center; gap:12px; padding:11px 16px; background:#151b26; border-bottom:1px solid var(--border); }
+  .dots { display:flex; gap:6px; } .dot { width:11px; height:11px; border-radius:50%; }
+  .r{background:#ff5f56;} .y{background:#ffbd2e;} .g{background:#27c93f;}
+  .title { flex:1; text-align:center; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--faint); }
+  .body { padding:34px 30px 38px; font-family:'JetBrains Mono',monospace; }
+  .line { color:var(--muted); font-size:14px; margin-bottom:8px; }
+  .line .pr { color:var(--green); }
+  .code { font-size:64px; font-weight:700; color:#fff; letter-spacing:-2px; margin:14px 0 6px; }
+  .code .x { color:var(--blue); }
+  .msg { color:var(--muted); font-size:14px; margin-bottom:26px; }
+  .home { display:inline-flex; align-items:center; gap:9px; font-family:'JetBrains Mono',monospace; font-size:13.5px; padding:11px 20px; border-radius:8px; background:var(--blue); color:#07101f; font-weight:600; text-decoration:none; transition:all .2s; }
+  .home:hover { background:#79b8ff; transform:translateY(-2px); }
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="bar"><span class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></span><span class="title">issam@dev: ~/error</span></div>
+    <div class="body">
+      <div class="line"><span class="pr">$</span> cat page.html</div>
+      <div class="code">4<span class="x">0</span>4</div>
+      <div class="msg">// cette page n'existe pas ou a été déplacée.</div>
+      <a href="/" class="home">&#8592; cd ~/accueil</a>
+    </div>
+  </div>
+</body>
+</html>
